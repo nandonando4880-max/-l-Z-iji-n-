@@ -4,9 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pesan Khusus Untuk Kak Salsa dari Fernan</title>
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- Library untuk Efek Kembang Api/Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <style>
+    /* RESET & DASAR */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -26,7 +29,7 @@
       position: relative;
     }
 
-    /* Partikel Lingkaran/Bintang Cerah */
+    /* PARTIKEL LINGKARAN/BINTANG CERAH */
     .bg-particles {
       position: absolute;
       top: 0;
@@ -39,17 +42,18 @@
 
     .bubble {
       position: absolute;
-      background: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.65);
       border-radius: 50%;
       animation: floatBubble 4s infinite ease-in-out alternate;
+      will-change: transform, opacity;
     }
 
     @keyframes floatBubble {
       0% { transform: translateY(0) scale(0.8); opacity: 0.5; }
-      100% { transform: translateY(-20px) scale(1.2); opacity: 0.9; }
+      100% { transform: translateY(-25px) scale(1.2); opacity: 0.95; }
     }
 
-    /* Hiasan Badge Atas Cerah */
+    /* HIASAN BADGE ATAS CERAH */
     .ribbon {
       position: absolute;
       top: -15px;
@@ -65,34 +69,42 @@
       z-index: 20;
     }
 
-    /* Kartu Utama Cerah (Glassmorphism Terang) */
+    /* KARTU UTAMA CERAH (GLASSMORPHISM TERANG) */
     .card {
       position: relative;
       z-index: 10;
-      background: rgba(255, 255, 255, 0.75);
+      background: rgba(255, 255, 255, 0.82);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 2px solid rgba(255, 255, 255, 0.9);
+      border: 2px solid rgba(255, 255, 255, 0.95);
       border-radius: 28px;
       padding: 40px 25px 30px 25px;
       max-width: 550px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08), 0 0 20px rgba(255, 255, 255, 0.8);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 0 25px rgba(255, 255, 255, 0.9);
       display: flex;
       flex-direction: column;
       align-items: center;
+      animation: cardInit 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      will-change: transform, opacity;
+    }
+
+    @keyframes cardInit {
+      0% { opacity: 0; transform: translateY(20px) scale(0.96); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     .header-icon {
       font-size: 58px;
       margin-bottom: 8px;
       display: inline-block;
-      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      will-change: transform;
     }
 
     .header-icon.bounce {
-      transform: scale(1.3) rotate(15deg);
+      transform: scale(1.35) rotate(15deg);
     }
 
     h1 {
@@ -102,6 +114,7 @@
       -webkit-text-fill-color: transparent;
       margin-bottom: 6px;
       font-weight: 800;
+      transition: all 0.4s ease;
     }
 
     .subtitle {
@@ -109,9 +122,10 @@
       font-size: 0.98rem;
       margin-bottom: 25px;
       font-weight: 500;
+      transition: all 0.3s ease;
     }
 
-    /* Area Pesan Bertahap */
+    /* AREA PESAN BERTAHAP */
     .message-container {
       display: flex;
       flex-direction: column;
@@ -120,7 +134,7 @@
       width: 100%;
     }
 
-    /* Box Pesan Tema Terang */
+    /* BOX PESAN TEMA TERANG DENGAN ANIMASI HALUS */
     .msg-box {
       background: #ffffff;
       border-radius: 20px;
@@ -132,14 +146,24 @@
       font-size: 0.96rem;
       display: none;
       opacity: 0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-      transform: translateY(30px) scale(0.9);
-      transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+      will-change: transform, opacity;
     }
 
     .msg-box.show {
       display: block;
-      animation: slideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      animation: smoothSlideIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes smoothSlideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(25px) scale(0.94);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
     }
 
     .msg-box.highlight {
@@ -150,11 +174,12 @@
     .chinese-text {
       background: #f0fdf4;
       border-left: 4px solid #22c55e;
-      padding: 10px 14px;
-      border-radius: 8px;
-      margin-top: 10px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      margin-top: 12px;
       font-size: 0.92rem;
       color: #15803d;
+      box-shadow: 0 2px 8px rgba(34, 197, 94, 0.08);
     }
 
     .contact-box {
@@ -173,31 +198,22 @@
       margin-top: 8px;
       background: #25d366;
       color: white;
-      padding: 6px 16px;
+      padding: 8px 18px;
       border-radius: 20px;
       text-decoration: none;
       font-weight: 700;
       font-size: 0.85rem;
-      box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
-      transition: transform 0.2s;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+      will-change: transform;
     }
 
     .wa-btn:hover {
-      transform: scale(1.05);
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 6px 16px rgba(37, 211, 102, 0.45);
     }
 
-    @keyframes slideIn {
-      0% {
-        opacity: 0;
-        transform: translateY(30px) scale(0.85);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    /* Salam Hangat Dari Fernan */
+    /* SALAM HANGAT DARI FERNAN */
     .sender-tag {
       margin-top: 15px;
       padding-top: 12px;
@@ -209,7 +225,7 @@
       font-size: 0.95rem;
     }
 
-    /* Tombol Cerah Interaktif */
+    /* TOMBOL CERAH INTERAKTIF HALUS */
     .btn-main {
       background: linear-gradient(135deg, #38ef7d 0%, #11998e 100%);
       color: #fff;
@@ -219,31 +235,35 @@
       font-weight: 800;
       border-radius: 30px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                  box-shadow 0.4s ease, 
+                  background 0.4s ease;
       box-shadow: 0 6px 20px rgba(17, 153, 142, 0.35);
+      will-change: transform;
     }
 
     .btn-main:hover {
-      transform: translateY(-2px) scale(1.05);
-      box-shadow: 0 8px 25px rgba(17, 153, 142, 0.5);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 10px 25px rgba(17, 153, 142, 0.5);
     }
 
     .btn-main:active {
-      transform: scale(0.95);
+      transform: scale(0.96);
     }
 
-    /* Emoji Melayang */
+    /* EMOJI MELAYANG HALUS */
     .floating-emoji {
       position: absolute;
       pointer-events: none;
-      animation: floatUp 3s linear forwards;
-      font-size: 28px;
+      animation: floatUp 3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      font-size: 30px;
       z-index: 20;
+      will-change: transform, opacity;
     }
 
     @keyframes floatUp {
       0% { opacity: 1; transform: translateY(0) scale(0.8); }
-      100% { opacity: 0; transform: translateY(-180px) scale(1.5); }
+      100% { opacity: 0; transform: translateY(-200px) scale(1.5); }
     }
   </style>
 </head>
@@ -264,7 +284,9 @@
       
       <!-- Bagian 1 -->
       <div class="msg-box" id="msg-1">
-        ✨ Berasa cepet banget, tau-tau Kak Salsa udah mau kembali ke kampus aja, padahal baru masuk berapa hari. Tapi meski singkat belajar sama Kak Salsa SERU, dan asik diajak bercanda. Makasih ya kak buat ilmunya. Seru bisa kenal dan diajar Kak Salsa dan teman-teman PLP dari UMP.
+        ✨ Berasa cepet banget, tau-tau Kak Salsa udah mau kembali ke kampus aja, padahal baru masuk berapa hari. Tapi meski singkat belajar sama Kak Salsa SERU, dan asik diajak bercanda. Makasih ya kak buat ilmunya. Seru bisa kenal dan diajar Kak Salsa dan teman-teman PLP dari UMP.<br><br>
+        🌸 <strong>Pesan Titipan:</strong><br>
+        Oiya Kak Salsa, bantu ucapin juga makasih dan selamat tinggal buat Kak Anas, Kak Hana, dan Kak Tarysa yaa!
       </div>
 
       <!-- Bagian 2 -->
@@ -275,9 +297,6 @@
 
       <!-- Bagian 3 -->
       <div class="msg-box highlight" id="msg-3">
-        🤲 <strong>Doa Paling Penting:</strong><br>
-        • Semoga dikasi kelancaran pas saat ngerjain skripsi, ga banyak revisi.<br>
-        • Dapat dosen pembimbing yang enggk ilang-ilangan waktu di-chat (xixixixi), biar cepat lulus!<br><br>
         <strong>Sukses selalu Kak Salsa dan kawan-kawan dari UMP! ✨💖🌟</strong>
 
         <!-- Ucapan Mandarin -->
@@ -343,7 +362,7 @@
 
       } else if (step === 2) {
         document.getElementById('msg-2').classList.add('show');
-        document.getElementById('sub-title').innerText = "Klik lagi untuk doa khusus skripsi!";
+        document.getElementById('sub-title').innerText = "Klik lagi untuk ucapan spesial!";
         icon.innerText = "📚";
 
         triggerConfetti();
