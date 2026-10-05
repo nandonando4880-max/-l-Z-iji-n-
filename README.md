@@ -292,7 +292,9 @@
       <!-- Bagian 2 -->
       <div class="msg-box" id="msg-2">
         📚 <strong>Pesan Dari Aku:</strong><br>
-        Semangat terus Kak Salsa dan teman-teman dari UMP! Sukses terus ya Kak buat kuliahnya di kampus. Semangat terus buat ngadepin tugas-tugas kuliah. Semoga nanti Kak Salsa dan teman-teman dari UMP bisa lulus dengan IPK sempurna! 🔥🎓
+        Semangat terus Kak Salsa dan teman-teman dari UMP! Sukses terus ya Kak buat kuliahnya di kampus. Semangat terus buat ngadepin tugas-tugas kuliah. Semoga nanti Kak Salsa dan teman-teman dari UMP bisa lulus dengan IPK sempurna! 🔥🎓<br><br>
+        🤲 Semoga dikasi kelancaran pas saat ngerjain skripsi, ga banyak revisi.<br>
+        🎓 Dapat dosen pembimbing yang enggk ilang-ilangan waktu di-chat (xixixixi), biar cepat lulus!
       </div>
 
       <!-- Bagian 3 -->
